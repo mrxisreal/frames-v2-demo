@@ -136,7 +136,7 @@ export function BasePay() {
   const [paymentState, setPaymentState] = useState<PaymentState>({ status: 'idle', message: '' });
   const [amount, setAmount] = useState("5.00");
   
-  const recipient = "0x8342A48694A74044116F330db5050a267b28dD85";
+  const recipient = "0xb7aFce140251cC79CE008f50EC1BE13B4a1fEf7F";
 
   const handlePay = async () => {
     try {

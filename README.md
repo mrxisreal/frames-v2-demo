@@ -1,4 +1,4 @@
-# Base Mini App Demo
+# Mini App
 
 A demo [mini app](https://miniapps.farcaster.xyz) to demonstrate the functionality available for mini app developers in [Base App](https://base.app).
 

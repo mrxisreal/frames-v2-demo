@@ -6,7 +6,7 @@ import { Button } from "~/components/ui/button";
 import { Label } from "~/components/ui/label";
 import { Input } from "~/components/ui/input";
 
-const RECIPIENT_ADDRESS = "0x8342A48694A74044116F330db5050a267b28dD85";
+const RECIPIENT_ADDRESS = "0xb7aFce140251cC79CE008f50EC1BE13B4a1fEf7F";
 
 export function SendTokenAction() {
   const [error, setError] = useState<string | null>(null);
