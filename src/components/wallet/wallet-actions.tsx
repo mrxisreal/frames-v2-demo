@@ -3,7 +3,15 @@
 
 import { Button } from "~/components/ui/button";
 import { useState, ChangeEvent, useEffect } from "react";
-import { useAccount, useConnect, useDisconnect, useSignMessage, useSwitchChain, useSendTransaction, useConfig } from "wagmi";
+import {
+  useAccount,
+  useConnect,
+  useDisconnect,
+  useSignMessage,
+  useSwitchChain,
+  useSendTransaction,
+  useConfig,
+} from "wagmi";
 import { parseEther, createWalletClient, custom, type Address } from "viem";
 import { verifyMessage } from "@wagmi/core";
 import { base, optimism } from "viem/chains";
@@ -21,13 +29,11 @@ export function WalletConnect() {
       <div className="flex items-center justify-between p-4 border border-border rounded-lg bg-white">
         <div>
           <div className="font-medium text-sm">Connected</div>
-          <div className="text-xs text-muted-foreground font-mono">{truncateAddress(address)}</div>
+          <div className="text-xs text-muted-foreground font-mono">
+            {truncateAddress(address)}
+          </div>
         </div>
-        <Button
-          onClick={() => disconnect()}
-          variant="outline"
-          size="sm"
-        >
+        <Button onClick={() => disconnect()} variant="outline" size="sm">
           Disconnect
         </Button>
       </div>
@@ -36,14 +42,17 @@ export function WalletConnect() {
 
   return (
     <div className="space-y-2">
-      {connectors.map((connector) => (
+      {connectors.map(connector => (
         <Button
           key={connector.uid}
           onClick={() => connect({ connector })}
           variant="outline"
-          className="w-full"
+          className="w-full gap-[10px]"
         >
           Connect
+          {/* <img className="w-[25px] h-[25px] bg-white p-1 rounded-[4px]" src={connector?.icon} /> */}
+          {" " + connector?.name}
+          {/* Connect */}
         </Button>
       ))}
     </div>
@@ -61,21 +70,21 @@ export function SignMessage() {
   return (
     <div className="space-y-3">
       <div>
-        <label className="block text-sm font-medium mb-2">Message to Sign</label>
+        <label className="block text-sm font-medium mb-2">
+          Message to Sign
+        </label>
         <textarea
           value={message}
-          onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setMessage(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
+            setMessage(e.target.value)
+          }
           className="w-full p-2 border border-border rounded text-sm"
           rows={3}
           placeholder="Enter message to sign"
         />
       </div>
-      
-      <Button
-        onClick={handleSign}
-        disabled={isPending}
-        className="w-full"
-      >
+
+      <Button onClick={handleSign} disabled={isPending} className="w-full">
         {isPending ? "Signing..." : "Sign Message"}
       </Button>
 
@@ -96,7 +105,10 @@ export function SignSiweMessage() {
   const { address, chain } = useAccount();
   const { signMessage, data: signature, isPending } = useSignMessage();
   const [lastMessage, setLastMessage] = useState<SiweMessage | null>(null);
-  const [verifyResult, setVerifyResult] = useState<{ success: boolean; error?: string } | null>(null);
+  const [verifyResult, setVerifyResult] = useState<{
+    success: boolean;
+    error?: string;
+  } | null>(null);
 
   useEffect(() => {
     const verifySignature = async () => {
@@ -109,15 +121,18 @@ export function SignSiweMessage() {
           signature,
           chainId: chain.id,
         });
-        
+
         setVerifyResult({ success: isValid });
         if (!isValid) {
-          setVerifyResult({ success: false, error: 'Signature verification failed' });
+          setVerifyResult({
+            success: false,
+            error: "Signature verification failed",
+          });
         }
       } catch (error) {
-        setVerifyResult({ 
-          success: false, 
-          error: error instanceof Error ? error.message : 'Unknown error' 
+        setVerifyResult({
+          success: false,
+          error: error instanceof Error ? error.message : "Unknown error",
         });
       }
     };
@@ -183,20 +198,32 @@ export function SignSiweMessage() {
       {signature && (
         <div className="mt-3 space-y-2">
           <div className="p-3 text-xs overflow-x-scroll bg-muted border border-border rounded-lg font-mono">
-            <div className="font-semibold text-muted-foreground mb-1">SIWE Signature</div>
-            <div className="whitespace-pre text-primary break-all">{signature}</div>
+            <div className="font-semibold text-muted-foreground mb-1">
+              SIWE Signature
+            </div>
+            <div className="whitespace-pre text-primary break-all">
+              {signature}
+            </div>
           </div>
 
           {verifyResult && (
             <div className="p-3 text-xs bg-muted border border-border rounded-lg font-mono">
-              <div className="font-semibold text-muted-foreground mb-1">Verification Result</div>
+              <div className="font-semibold text-muted-foreground mb-1">
+                Verification Result
+              </div>
               {verifyResult.success ? (
-                <div className="text-green-600 font-medium">✓ Valid signature</div>
+                <div className="text-green-600 font-medium">
+                  ✓ Valid signature
+                </div>
               ) : (
                 <div>
-                  <div className="text-destructive font-medium">✗ Invalid signature</div>
+                  <div className="text-destructive font-medium">
+                    ✗ Invalid signature
+                  </div>
                   {verifyResult.error && (
-                    <div className="text-destructive mt-1 text-xs">{verifyResult.error}</div>
+                    <div className="text-destructive mt-1 text-xs">
+                      {verifyResult.error}
+                    </div>
                   )}
                 </div>
               )}
@@ -225,11 +252,15 @@ export function SendEth() {
   return (
     <div className="space-y-3">
       <div>
-        <label className="block text-sm font-medium mb-2">Recipient Address</label>
+        <label className="block text-sm font-medium mb-2">
+          Recipient Address
+        </label>
         <input
           type="text"
           value={recipient}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setRecipient(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setRecipient(e.target.value)
+          }
           className="w-full p-2 border border-border rounded text-sm"
           placeholder="0x..."
         />
@@ -240,7 +271,9 @@ export function SendEth() {
         <input
           type="number"
           value={amount}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setAmount(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setAmount(e.target.value)
+          }
           className="w-full p-2 border border-border rounded text-sm"
           step="0.001"
           min="0"
@@ -298,11 +331,15 @@ export function SendTransaction() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-2">Data (optional)</label>
+        <label className="block text-sm font-medium mb-2">
+          Data (optional)
+        </label>
         <input
           type="text"
           value={data}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setData(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setData(e.target.value)
+          }
           className="w-full p-2 border border-border rounded text-sm"
           placeholder="0x..."
         />
@@ -313,7 +350,9 @@ export function SendTransaction() {
         <input
           type="number"
           value={value}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setValue(e.target.value)
+          }
           className="w-full p-2 border border-border rounded text-sm"
           step="0.001"
           min="0"
@@ -361,7 +400,8 @@ export function SignTypedData() {
         name: "Mini App",
         version: "1",
         chainId: 8453,
-        verifyingContract: "0x0000000000000000000000000000000000000000" as Address,
+        verifyingContract:
+          "0x0000000000000000000000000000000000000000" as Address,
       };
 
       const types = {
@@ -443,7 +483,7 @@ export function SwitchChain() {
         </div>
       )}
       <div className="flex gap-2">
-        {chains.map((chain) => {
+        {chains.map(chain => {
           const isActive = currentChain?.id === chain.id;
           return (
             <Button

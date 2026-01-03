@@ -23,7 +23,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <WagmiProvider>
       <FrameProvider>
-        <ErudaProvider />
+        {/* <ErudaProvider /> */}
         {children}
       </FrameProvider>
     </WagmiProvider>
