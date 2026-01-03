@@ -4,9 +4,9 @@ import { twMerge } from "tailwind-merge"
 export const METADATA = {
   name: "Space Drive",
   description: "Access your files from anywhere, anytime.",
-  bannerImageUrl: `${process.env.NEXT_PUBLIC_URL}/assets/screens/splash-03.png`,
-  iconImageUrl: `${process.env.NEXT_PUBLIC_URL}/icon.png`,
-  homeUrl: process.env.NEXT_PUBLIC_URL ?? "https://frames-v2-demo-lilac.vercel.app",
+  bannerImageUrl: `https://frames-v2-demo.vercel.app/assets/screens/splash-03.png`,
+  iconImageUrl: `https://frames-v2-demo.vercel.app/icon.png`,
+  homeUrl: process.env.NEXT_PUBLIC_URL ?? "https://frames-v2-demo-demo.vercel.app",
   // homeUrl: "https://frames-v2-demo-lilac.vercel.app",
   splashBackgroundColor: "#131313"
 }
