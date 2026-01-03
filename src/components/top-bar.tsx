@@ -14,25 +14,26 @@ export function TopBar() {
     }
   };
 
-  const userPfp = frameContext?.context && (frameContext.context as any)?.user?.pfpUrl 
-    ? (frameContext.context as any).user.pfpUrl 
-    : undefined;
+  const userPfp =
+    frameContext?.context && (frameContext.context as any)?.user?.pfpUrl
+      ? (frameContext.context as any).user.pfpUrl
+      : undefined;
 
   return (
     <div className="mb-6 mt-3 flex items-center justify-between">
-      <Image 
-        src="/base-logo.png" 
-        alt="Base" 
-        width={120}
-        height={32}
-        className="h-8 object-contain"
-      />
-      
+      <div className="flex gap-[10px] flex-row items-center">
+        {/* <Image
+          src="/assets/mask.png"
+          alt="Base"
+          width={32}
+          height={32}
+          className="h-8 object-contain"
+        /> */}
+        <h1 className="text-[26px] text-[#1d00e2] font-space">Space Drive</h1>
+      </div>
+
       {userPfp && (
-        <button
-          onClick={handleProfileClick}
-          className="flex-shrink-0"
-        >
+        <button onClick={handleProfileClick} className="flex-shrink-0">
           <Image
             src={userPfp as string}
             alt="Profile"

@@ -2,13 +2,13 @@ import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 
 export const METADATA = {
-  name: "Mini App",
-  description: "A demo mini app for testing capabilities on Base",
-  bannerImageUrl: 'https://i.imgur.com/2bsV8mV.png',
-  iconImageUrl: 'https://i.imgur.com/brcnijg.png',
-  // homeUrl: process.env.NEXT_PUBLIC_URL ?? "https://frames-v2-demo-lilac.vercel.app",
-  homeUrl: "https://frames-v2-demo-lilac.vercel.app",
-  splashBackgroundColor: "#FFFFFF"
+  name: "Space Drive",
+  description: "Access your files from anywhere, anytime.",
+  bannerImageUrl: 'https://frames-v2-demo-lilac.vercel.app/assets/screens/splash-02.png',
+  iconImageUrl: 'https://frames-v2-demo-lilac.vercel.app/icon.png',
+  homeUrl: process.env.NEXT_PUBLIC_URL ?? "https://frames-v2-demo-lilac.vercel.app",
+  // homeUrl: "https://frames-v2-demo-lilac.vercel.app",
+  splashBackgroundColor: "#131313"
 }
 
 export function cn(...inputs: ClassValue[]) {
