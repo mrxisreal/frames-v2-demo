@@ -296,7 +296,7 @@ export default function Demo() {
         </div>
 
         <div className="px-4 pb-20">
-          {/* {activeTab === "actions" && (
+          {activeTab === "actions" && (
             <div>
               {currentActionPage === "list" ? (
                 <ActionList 
@@ -311,7 +311,7 @@ export default function Demo() {
                 />
               )}
             </div>
-          )} */}
+          )}
 
            <ContextView />
 

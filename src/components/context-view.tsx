@@ -14,7 +14,7 @@ export function ContextView() {
 
   return (
     <div>
-      {/* <div className="mb-4">
+      <div className="mb-4">
         <button
           onClick={toggleFullObject}
           className="flex items-center gap-2 transition-colors"
@@ -36,15 +36,15 @@ export function ContextView() {
             </pre>
           </div>
         )}
-      </div> */}
-      {/* <div className="mb-6">
+      </div>
+      <div className="mb-6">
         <Typography variant="heading" className="font-semibold text-foreground mb-3">isInMiniApp</Typography>
         <div className="p-4 bg-white border border-border rounded-lg">
           <span className="font-mono text-sm text-primary font-medium">
             {frameContext ? (frameContext.isInMiniApp ?? false).toString() : 'false'}
           </span>
         </div>
-      </div> */}
+      </div>
 
       {frameContext?.context && (
         <div className="space-y-3">
