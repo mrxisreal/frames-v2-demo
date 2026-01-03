@@ -313,7 +313,7 @@ export default function Demo() {
             </div>
           )} */}
 
-          <ContextView />
+           <ContextView />
 
           <div className="space-y-4">
             {!isConnected ? (

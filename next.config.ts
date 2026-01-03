@@ -2,6 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   devIndicators: false,
+  experimental: {
+    urlImports: ["https://framer.com/"],
+  },
   images: {
     remotePatterns: [
       {
